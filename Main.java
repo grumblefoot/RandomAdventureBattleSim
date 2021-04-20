@@ -44,14 +44,12 @@
 
 
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-
 // this runs the program
 class Main {
-	
+	// Variables
 	
 	public static void main(String[] args) {
     System.out.println("build version 3.4");
@@ -71,22 +69,22 @@ class Main {
     
 		if(battleLoop(stat, mStat, b, s) == false) { // this runs the battle loop, and ends the game if you are defeated.
 			postBattleLost(level, mGen);	// IF YOU LOSE TO THE FIRST MONSTER 
-      System.out.println("You have died, GAME OVER");
+			System.out.println("You have died, GAME OVER");
 		return false; // this causes GameOver
 		}
 		// IF YOU WIN AGAINST THE FIRST MONSTER 
-    postBattleWon(level, mGen); // this is a post battle story call for victory   
+		postBattleWon(level, mGen); // this is a post battle story call for victory   
 		System.out.println("You defeat the first monster! But there are more lurking around the corner ..."); 
 		levelUp(stat); // this advances the level and rewards the player with new equipment
 		MonStat(level, mStat, b); // this generates a new monster
 		//STORY HERE BEFORE SECOND BATTLE
 		preBattle(level,mGen); // this is prebattle story call
 		if(battleLoop(stat, mStat, b, s) == false) {
-      // this runs the battle loop, and ends the game if you are defeated.
-
+			// this runs the battle loop, and ends the game if you are defeated.
 			postBattleLost(level, mGen);  // IF YOU LOSE TO THE SECOND MONSTER
 			System.out.println("You have died, GAME OVER");
-			return false;} // this causes gameover
+			return false;
+		} // this causes GameOver
 
 		// If YOU WIN AGAINST THE SECOND MONSTER      
 		System.out.println("You defeat the second monster! Last one coming up!");
@@ -97,31 +95,27 @@ class Main {
 		//STORY HERE BOSS BATTLE BEFORE BATTLE
 		preBattle(level, mGen); // this is prebattle story call
 		if(battleLoop(stat, mStat, b, s) == false) {
-    // this runs the battle loop, and ends the game if you are defeated.
+			// this runs the battle loop, and ends the game if you are defeated.
 			postBattleLost(level, mGen); // IF YOU LOSE TO THE BOSS MONSTER
-
-      System.out.println("You have died, GAME OVER");
+			System.out.println("You have died, GAME OVER");
 			return false;
 		}
-    postBattleWon(level, mGen);
-
-
+		postBattleWon(level, mGen);
 		//STORY HERE EPILOGUE 
 		System.out.println("News of your exploits has reached the ruler of the land, impressed with your victories they have decided to knight you and bestow a small fortune upon you. You soon become a legendary knight across the lands. Your name will go down in history! You win the game!");
 		return true;
-		}
+	}
 	
-  	
-	// this controls the gear rewards.
+  	// this controls the gear rewards.
 	public static int[] characterEquips(int level, int[] stat, Scanner s) {
 		System.out.println("Please choose a weapon, armor, and 2 pieces of special gear");
-		
 		weaponEquip(level, stat);
 		armorEquip(level, stat);
 		gearACCEquip(level, stat);
 		gearEVAEquip(level, stat);
 		return stat;
 	}
+		
  
 	// In this section, the Stats for both monsters and PC are intilized. 
 
