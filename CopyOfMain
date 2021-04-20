@@ -1,0 +1,52 @@
+/*This sounds great! Thank you for the detailed draft. I have a few suggestions: 
+
+1. The dice rolls can easily be achieved by using a Random object like in Assignment 3. This is relatively self contained, so you should be able to tackle this part right now. 
+
+2. The interaction/choice elements of the game will become easier to visualize after we learn about Input/Interaction this week. After that, you will be able to ask the user to type things (such as what character type they want to play as) and use their response to drive your code. 
+
+3. The stat comparisons will likely be many if statements. We have had a lot of practice with these already, so this is another part of the project you should be able to start exploring right away. 
+
+4. I imagine some kind of loop will be needed to continue playing the game while the player's hp is positive. Will the player be able to recover hp? I am excited to see where this project goes. Please let me know if you have any questions or get stuck. I am always happy to help!
+/*/
+
+import java.util.Random;
+
+//stat generation *******
+
+
+class Main  {
+  public static void main(String[] args) {
+    
+
+  int attack = 0;
+  int defense = 0;
+  int mAttack = 0;
+  int mDefense = 0;
+  int evasion = 0;
+  int accuracy = 0;
+  int hp = 0;
+  int[] stat ={attack, defense, mAttack, mDefense, evasion, accuracy,hp};
+  Random b = new Random();
+  mainStat(stat, b);
+  }
+
+public static String[] charStats = {"Attack","Defense","Magic Attack","Magic Defense","Evasion","Accuracy","HP"};
+
+  public static int[] mainStat(int[] stat, Random r){
+    
+    for(int i = 0; i<stat.length;i++){
+      stat[i]=r.nextInt(6)+1;
+      System.out.printf("Your character's " + charStats[i] + " value is " + stat[i] + "\n");
+    }
+
+    return stat;
+  } 
+// end stat generation *******
+
+ Scanner input = new Scanner(System.in);
+
+        System.out.print("Would you like to roll again? Enter yes or no. ");
+
+        String rollAgain = input.nextLine();
+
+}

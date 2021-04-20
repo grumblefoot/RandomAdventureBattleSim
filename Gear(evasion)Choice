@@ -1,0 +1,174 @@
+import java.util.Scanner;
+
+// this class generates a level appropriate Gear piece.
+// GearAccEquip(level, stat);
+// the level is a value between 0 - 2, it starts at zero,
+// please add to the level at the end of a battle
+// stat is the player's stats
+// this class inputs the player's stats, asks the player to choose a gear with a scanner
+// once a gear is selected, the class adds that gear's buff to the appropriate stat
+// it then outputs the improved stats.
+
+// CharecterGen & StatGen need to be in your eclipse and in the same package to enable this code. 
+
+public class GearEvasionChoice extends CharacterGen{
+  
+	public static void main(String[] args) {
+
+    // test code for this class goes here
+
+		gearEVAEquip(level, stat);
+  }
+// goals of this class:
+// intilize the gear options.
+// Store the bonus values as an Int[]. 
+// Store the gear name as a String[].
+// create a method to add the gear bonus to the relevant stat.
+ // i stat & mStat locations -> {0 = attack, 1 = defense, 2 = mAttack, 3 = mDefense, 4 = accuracy,  5 = evasion, 6 = hp};
+
+
+// Do we want a random value between min and max, or a set bonus? currently using set.
+// note that these ints & Strings could (should?) be moved to StatGen. 
+
+static int camoCloak = 2;
+static int soundDamper = 2;
+static int scentBlocker = 2;
+		
+static int distortionBelt = 1;
+static int phantomSound = 1;
+static int deployableDecoy = 1;
+		
+static int illusionGenerator = 1;
+static int destractionBird = 1;
+static int displacementField = 1;
+ 
+
+  // to access the 2d array, use the first bracket [] to set basic, advanced, or legend. 
+  // use the second bracket to access the gear value
+  // so weapon[0][1] is the soundLocator currently
+  // and weapon [2][1] is the valueAddedTargeter currently
+    
+public static int[][] gearEva  = {{camoCloak, soundDamper, scentBlocker}, {distortionBelt, phantomSound, deployableDecoy},{illusionGenerator, destractionBird, displacementField}};
+
+
+public static String[] basicGearEva = {"Camo Cloak", "Sound Damper", "Scent Blocker"};
+public static String[] advanceGearEva = {"Distortion Belt", "Phantom Sound", "Deployable Decoy"};
+public static String[] legendaryGearEva = {"Illusion Generator", "Distracting Bird Ally", "Displacement Field"};
+public static String[] equip = {"", "", ""};
+public static int playerChoice = 0;
+
+// if the level is zero, then generate a basic weapon
+// The player chooses the weapon with the selection of 0, 1, or 2.
+
+  public static int[] gearEVAEquip(int level, int[] stat) {
+    if(level == 0) {
+    	equip = basicGearEva;
+    	System.out.println("Choose 0, 1, or 2");
+    	for(int i = 0; i < 3; i++ ) {
+    		System.out.println( i  + " = " + equip [i]);
+    	}
+
+// Player choice input is in this section. This code should only accept inputs of 0, 1, 2
+// Any other inputs should be rejected and the loop continues.
+
+    		System.out.println("Choose here ");
+    		s.nextLine();
+    		while(s.hasNext()) {   		
+    			if(s.hasNextInt()) {
+    				playerChoice = s.nextInt();	
+    				System.out.println("Player chose " + playerChoice);
+    				if(playerChoice == 0 || playerChoice == 1 || playerChoice == 2) {
+    					System.out.println("equiped " + equip [playerChoice]);
+    					break;
+    				}
+    				else {
+    					System.out.println("Not a valid choice!");
+    				}
+    			}
+    		}
+    		
+// this adds the gear bonus to the defense stat. 
+
+    		stat[5] = stat[5] + gearEva[0][playerChoice];
+    		System.out.println("Player chose " + equip [playerChoice] + " This sets " + charStats[5] + " to " + stat[5]);
+    		return stat;
+    }	
+
+// if the level is 1, generate an advanced weapon.
+
+    if(level == 1) {
+    	equip = advanceGearEva;
+    	System.out.println("Choose 0, 1, or 2");
+    	for(int i = 0; i < 3; i++ ) {
+    		System.out.println( i  + " = " + equip [i]);
+    	}
+      
+      // Player choice input is in this section.
+      // This code should only accept inputs of 0, 1, 2
+      // Any other inputs should be rejected and the loop continues.
+    
+    		System.out.println("Choose here ");
+    		s.nextLine();
+    		while(s.hasNext()) {   		
+    			if(s.hasNextInt()) {
+    				playerChoice = s.nextInt();	
+    				System.out.println("Player chose " + playerChoice);
+    				if(playerChoice == 0 || playerChoice == 1 || playerChoice == 2) {
+    					System.out.println("equiped " + equip [playerChoice]);
+    					break;
+    				}
+    				else {
+    					System.out.println("Not a valid choice!");
+    				}
+    			}
+    		}
+    		
+    		stat[5] = stat[5] + gearEva[1][playerChoice];
+    		System.out.println("Player chose " + equip [playerChoice] + " This sets " + charStats[5] + " to " + stat[5]);
+    		return stat;
+    }
+
+// if the level is 2, generate a legend weapon
+
+    if(level == 2) {
+    	equip = legendaryGearEva;
+    	System.out.println("Choose 0, 1, or 2");
+    	for(int i = 0; i < 3; i++ ) {
+    		System.out.println( i  + " = " + equip [i]);
+    	}
+
+      // Player choice input is in this section.
+      // This code should only accept inputs of 0, 1, 2
+      // Any other inputs should be rejected and the loop continues.
+    
+    		System.out.println("Choose here ");
+    		s.nextLine();
+    		while(s.hasNext()) {   		
+    			if(s.hasNextInt()) {
+    				playerChoice = s.nextInt();	
+    				System.out.println("Player chose " + playerChoice);
+    				if(playerChoice == 0 || playerChoice == 1 || playerChoice == 2) {
+    					System.out.println("equiped " + equip [playerChoice]);
+    					break;
+    				}
+    				else {
+    					System.out.println("Not a valid choice!");
+    				}
+    			}
+    		}
+    		
+    		stat[5] = stat[5] + gearEva[2][playerChoice];
+    		System.out.println("Player chose " + equip [playerChoice] + " This sets " + charStats[5] + " to " + stat[5]);
+    		return stat;
+    }
+
+    // and the weapon value should be added to the attack Stat (stat[0])
+    // this code could be modified to change any stat as needed to make other items/weapons.
+    // the output of this code is the Stat array + weapon buff.
+
+    return stat;
+  }
+
+}
+  
+

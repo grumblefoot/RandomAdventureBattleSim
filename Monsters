@@ -1,0 +1,69 @@
+import java.util.Random;
+
+// this class generates a monster when called
+// MonStat(level, mStat, b); 
+// the level is a value between 0 - 2, it starts at zero,
+// please add to the level at the end of a battle
+// mStat is the monster stats. 
+// They are input at zero, and output at a random number between 1-6/2-7/3-8.
+// the higher values for monster stats are generated as level increases
+// b is a randomizer used for generating the monster stats 
+// b is also used for mGen, this randmizes the monster called on from the list.
+// mGen is also useful for matching a monster to a discription. 
+// See the Monster story comments at the top of that page for more information
+
+// This class needs the information stored in StatGen to run. 
+// In Eclipse, the "extend StatGen" lets this class access the data held in StatGen to run
+
+public class Monsters extends StatGen {
+	 
+	public static void main(String[] args) {
+	  // test inputs below
+		// level default is 0
+		MonStat(level, mStat, b);
+		MonStat(1, mStat, b);
+		MonStat(2, mStat, b);
+
+		  }	
+	// Monster names below. Please have the same number of entries for each option
+	public static String[] t1Monsters = {"Big Rat", "Dog-Sized Spider", "Goblin", "Zombie", "Rabid Dog"};
+	public static String[] t2Monsters = {"Giant Ant", "Black Bear", "Honey Badger", "Bandit", "Flying Shark"};
+	public static String[] t3Monsters = {"Armored Bear", "Elephant sized Spider", "30ft Snake", "12ft tall Human", "War Robot"};
+
+
+	  // The t1Monsters length determines number of name options for the monster names in the loop
+    
+	  public static int mGen = b.nextInt(t1Monsters.length);
+
+	  // each MonStat should generate a single random monster when called on.
+	public static int[] MonStat (int level, int[] mStat, Random r) {
+		if(level == 0) {
+			for(int m = 0; m < 1; m++) {
+
+			// this generates the monsters Stats.
+
+				for(int i = 0; i < mStat.length; i++){
+					mStat[i]= (r.nextInt(6)+1);
+					System.out.printf("The monster " + t1Monsters[mGen] + " Stat " + charStats[i] + " value is " + mStat[i]+ "\n");
+				}	
+			}
+		}
+		if(level == 1) {
+			for(int m = 0; m < 1; m++) {
+				for(int i = 0; i < mStat.length; i++){
+					mStat[i]= (r.nextInt(6)+2);
+					System.out.printf("The monster " + t2Monsters[mGen] + " Stat " + charStats[i] + " value is " + mStat[i]+ "\n");
+				}	
+			}
+		}
+		if(level == 2) {
+			for(int m =0; m < 1; m++) {
+				for(int i = 0; i < mStat.length; i++){
+					mStat[i]= (r.nextInt(6)+3);
+					System.out.printf("The monster " + t3Monsters[mGen] + " Stat " + charStats[i] + " value is " + mStat[i]+ "\n");
+				}	
+			}
+		}
+	return mStat;	
+	}
+}

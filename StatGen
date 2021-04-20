@@ -1,0 +1,19 @@
+import java.util.Random;
+
+public class StatGen {
+	// This is where the Stat values are first entered. 
+  
+	public static int attack = 0;
+	public static int defense = 0;
+	public static int mAttack = 0;
+	public static int mDefense = 0;
+	public static int evasion = 0;
+	public static int accuracy = 0;
+	public static int hp = 0;
+	public static int[] stat ={attack, defense, mAttack, mDefense, accuracy, evasion, hp};
+  public static int[] mStat ={attack, defense, mAttack, mDefense, accuracy, evasion, hp};
+	public static Random b = new Random();
+  public static String[] charStats = {"Attack","Defense","Magic Attack","Magic Defense","Accuracy","Evasion","Health Points"};
+  public static String name = "";
+  public static int level = 0;
+}

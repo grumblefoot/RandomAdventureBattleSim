@@ -1,0 +1,4 @@
+if(answer.contains("def")==false && answer.contains("str-atk") == false && answer.contains("mag-atk")==false){
+
+  System.out.println("please provide valid input");
+}

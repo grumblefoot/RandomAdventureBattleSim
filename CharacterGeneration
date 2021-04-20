@@ -1,0 +1,159 @@
+import java.util.Scanner;
+
+import java.util.Random;	
+
+
+
+public class CharacterGen extends StatGen {
+
+	// this is where a Character is generated. 
+
+	public static void main(String[] args) {
+    
+    // Note from Rowan:
+    // This call is the issue in the MainTest. I have removed it and changed it to 
+    // public static String CharacterGen(){}
+    // it is temporally set to return nameChosen
+    // also, the mainStat call in this code was throwing an error. 
+    // it has also be removed, as it should be called in the main when we make one.
+
+		// String[] raceList = {"human", "elf", "dwarf", "orc"};
+
+		// This command takes the input from the "stat" array in StatGen 
+		// It uses the randmizer "b" to generate a stat value at that loction between
+		// 1 and 6. It then outputs those stats with the descriptor String array
+		// This output is shown as a println. 
+		// The class returns the Int array "stat" with these new values.
+		
+		Scanner s = new Scanner(System.in);
+		
+		String[] placeList = {"in a small town in the desert", 
+				"in a cabin on the plains of Rutiarum", 
+				"in a large bustling city in the North", 
+				"fishing with the fleet on the Winding Sea", 
+				"traveling from town to town with a troupe of jongleurs",
+				"among the nomads of the sunless wastes",
+				"studying in the Great Libraries of Arn",
+				"working in the silver mines of the White Mountain",
+				"stealing whatever they could from the nobles of Veriatas"};
+		String[] houseList = {"home", "tent", "yurt", "wagon", "insula", "hovel", "cottage", "rented room"};
+		String[] ocurrance = {"someone had stolen your life savings",
+				"a fire had destroyed everything they owned",
+				"their family had been murdered by traveling brigands",
+				"a letter had arrived announcing that they had inherited a fortune", 
+				"someone had left a mysterious note warning them to flee", 
+				"a wild beast had eaten all their roommates"};
+		
+		String randomPlace = placeList[(int)(Math.random() * placeList.length)];
+		String randomHouse = houseList[(int)(Math.random() * houseList.length)];
+		String randomOcurrance = ocurrance[(int)(Math.random() * ocurrance.length)];
+		
+		String nameChosen = "";
+		nameChosen = playerName(s);
+
+		String raceChoice = "";
+		raceChoice = playerRace(s);
+		
+		System.out.println(nameChosen + "'s stats are:");
+		mainStat(stat, b);
+
+		String classChoice = "";
+		classChoice = playerClass(s);
+		
+		
+		System.out.println(nameChosen + " is a " + raceChoice + " " + classChoice + "\n");
+		
+		
+			
+		
+		System.out.println(nameChosen + "'s youth was spent " + randomPlace +"." );
+		System.out.println("One afternoon, " + nameChosen + " returned to their " + randomHouse + " and found that " + randomOcurrance + "."); 
+		System.out.println("\"That's it!\", they thought. \"I'm leaving this place!\"");
+		System.out.println(nameChosen + " quickly packed a bag and ventured forth to seek adventure.");
+
+	}
+
+	// this Generates the player name with a scanner input when called on. The name is stored in the string name.
+
+	public static String playerName(Scanner s){
+		// Scanner input = new Scanner(System.in);
+		System.out.println("What is your name?");
+		String nameChosen = s.nextLine();
+		System.out.println("Your character's name is " + nameChosen + "\n");
+		// input.close();
+
+		return nameChosen;
+		
+	}
+
+	// this allows the player to choose a race
+	public static String playerRace(Scanner s) {
+		String playerRace = "";
+		System.out.println("Please type a number from 1-4 to choose your character's race:");
+		System.out.println("1 - Human");
+		System.out.println("2 - Elf");
+		System.out.println("3 - Dwarf");
+		System.out.println("4 - Orc");
+		int raceChoice = s.nextInt();
+		if(raceChoice == 1) {
+			playerRace = "Human";
+				}
+		else if (raceChoice == 2) {
+			playerRace = "Elf";
+				}
+		else if (raceChoice == 3) {
+			playerRace = "Dwarf";
+		}
+		else if (raceChoice == 4) {
+			playerRace = "Orc";
+		}
+		else {
+			System.out.println("You must enter a number from 1-4");
+			playerRace = playerRace(s);
+		}
+		return playerRace;	
+}
+	
+	
+	// this allows the player to choose a class
+	public static String playerClass(Scanner s) {
+		String playerClass = "";
+		System.out.println("\n" + "Please type a number from 1-4 to choose your character's class:");
+		System.out.println("1 - Warrior");
+		System.out.println("2 - Rogue");
+		System.out.println("3 - Cleric");
+		System.out.println("4 - Mage");
+		int classChoice = s.nextInt();
+		if(classChoice == 1) {
+			playerClass = "Warrior";
+				}
+		else if (classChoice == 2) {
+			playerClass = "Rogue";
+				}
+		else if (classChoice == 3) {
+			playerClass = "Cleric";
+		}
+		else if (classChoice == 4) {
+			playerClass = "Mage";
+		}
+		else {
+			System.out.println("You must enter a number from 1-4");
+			playerClass = playerClass(s);
+		}
+		return playerClass;	
+}
+
+
+// this Randomizes the stats in StatGen, when called on.
+public static int[] mainStat(int[] stat, Random r){
+
+	for(int i = 0; i<stat.length;i++){
+		stat[i]=r.nextInt(6)+1;
+		System.out.printf("Player Character stat " + charStats[i] + " value is " + stat[i]+"\n");
+	}
+
+	return stat;
+
+}
+
+}
